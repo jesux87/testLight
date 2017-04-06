@@ -1,0 +1,14 @@
+C:\Users\DV17590N\Documents\Visual Studio 2013\Projects\TestNAudio\WpfTools\bin\Debug\WpfTools.dll
+C:\Users\DV17590N\Documents\Visual Studio 2013\Projects\TestNAudio\WpfTools\bin\Debug\WpfTools.pdb
+C:\Users\DV17590N\Documents\Visual Studio 2013\Projects\TestNAudio\WpfTools\obj\Debug\WpfTools.Properties.Resources.resources
+C:\Users\DV17590N\Documents\Visual Studio 2013\Projects\TestNAudio\WpfTools\obj\Debug\WpfTools.csproj.GenerateResource.Cache
+C:\Users\DV17590N\Documents\Visual Studio 2013\Projects\TestNAudio\WpfTools\obj\Debug\WpfTools.dll
+C:\Users\DV17590N\Documents\Visual Studio 2013\Projects\TestNAudio\WpfTools\obj\Debug\WpfTools.pdb
+C:\Users\DV17590N\Documents\Visual Studio 2013\Projects\TestNAudio\WpfTools\obj\Debug\WpfTools.csprojResolveAssemblyReference.cache
+C:\Users\DV17590N\Documents\Visual Studio 2015\Projects\TestNAudio\WpfTools\bin\Debug\WpfTools.dll
+C:\Users\DV17590N\Documents\Visual Studio 2015\Projects\TestNAudio\WpfTools\bin\Debug\WpfTools.pdb
+C:\Users\DV17590N\Documents\Visual Studio 2015\Projects\TestNAudio\WpfTools\obj\Debug\WpfTools.csprojResolveAssemblyReference.cache
+C:\Users\DV17590N\Documents\Visual Studio 2015\Projects\TestNAudio\WpfTools\obj\Debug\WpfTools.Properties.Resources.resources
+C:\Users\DV17590N\Documents\Visual Studio 2015\Projects\TestNAudio\WpfTools\obj\Debug\WpfTools.csproj.GenerateResource.Cache
+C:\Users\DV17590N\Documents\Visual Studio 2015\Projects\TestNAudio\WpfTools\obj\Debug\WpfTools.dll
+C:\Users\DV17590N\Documents\Visual Studio 2015\Projects\TestNAudio\WpfTools\obj\Debug\WpfTools.pdb
