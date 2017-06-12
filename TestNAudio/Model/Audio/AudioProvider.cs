@@ -7,6 +7,8 @@ using Common;
 
 using NAudio.Wave;
 
+using NAudioWpfDemo;
+
 using WpfTools;
 
 namespace TestNAudio.Model.Audio
@@ -20,7 +22,7 @@ namespace TestNAudio.Model.Audio
             this.OutPutWave = new WaveOutEvent();
             this.channel = new WaveChannel32(stream);
             this.OutPutWave.Init(this);
-
+            
             this.playPauseCommand = new RelayCommand(p =>
                                         {
                                             this.playing = !playing;
@@ -45,6 +47,11 @@ namespace TestNAudio.Model.Audio
             {
                 return this.channel;
             }
+        }
+
+        void truc()
+        {
+            //this.channel.ReadAsync()
         }
 
         public int Read(byte[] buffer, int offset, int count)

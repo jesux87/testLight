@@ -66,6 +66,13 @@ namespace TestNAudio.Model.Light
 
         public event EventHandler ValueChanged;
 
+        public int Level
+        {
+            get
+            {
+                return this.Component.Level + 1;
+            }
+        }
 
         public int Address
         {

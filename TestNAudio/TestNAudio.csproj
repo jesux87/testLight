@@ -68,6 +68,9 @@
     </ApplicationDefinition>
     <Compile Include="FaderValueToColorConverter.cs" />
     <Compile Include="IProjector.cs" />
+    <Compile Include="MainWindow1.xaml.cs">
+      <DependentUpon>MainWindow1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Audio\AudioDecorator.cs" />
     <Compile Include="Model\Audio\AudioEqualizer.cs" />
     <Compile Include="Model\Audio\AudioProvider.cs" />
@@ -79,7 +82,19 @@
     <Compile Include="Model\Light\LightDecorator.cs" />
     <Compile Include="Model\Light\LightProvider.cs" />
     <Compile Include="Model\Light\ILightProvider.cs" />
-    <Compile Include="Model\Sequence\Sequencer.cs" />
+    <Compile Include="Model\XmlModel\AudioFader.cs" />
+    <Compile Include="Model\XmlModel\AudioSequence.cs" />
+    <Compile Include="Model\XmlModel\AudioSource.cs" />
+    <Compile Include="Model\XmlModel\BulbLightSource.cs" />
+    <Compile Include="Model\XmlModel\GroupLightFader.cs" />
+    <Compile Include="Model\XmlModel\LightFader.cs" />
+    <Compile Include="Model\XmlModel\LightSequence.cs" />
+    <Compile Include="Model\XmlModel\LightSource.cs" />
+    <Compile Include="Model\XmlModel\RgbLightSource.cs" />
+    <Compile Include="Model\XmlModel\Scene.cs" />
+    <Compile Include="Model\XmlModel\Sequence.cs" />
+    <Compile Include="Model\XmlModel\SingleLightFader.cs" />
+    <Compile Include="ThreeByteToColorConverter.cs" />
     <Compile Include="ValueControl\AnimationValueControleur.cs" />
     <Compile Include="Model\CurveDirection.cs" />
     <Compile Include="ValueControl\IValueControleur.cs" />
@@ -87,6 +102,18 @@
     <Compile Include="ValueControl\FaderValueControleur.cs" />
     <Compile Include="Model\Light\LightActionAnimation.cs" />
     <Compile Include="ViewModel.cs" />
+    <Compile Include="View\Controls\LineControl.cs" />
+    <Compile Include="View\IWaveFormRenderer.cs" />
+    <Compile Include="View\PolygonWaveFormControl.xaml.cs">
+      <DependentUpon>PolygonWaveFormControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vm\IVisualizationPlugin.cs" />
+    <Compile Include="Vm\PolygonWaveFormVisualization.cs" />
+    <Compile Include="Vm\SampleAggregator.cs" />
+    <Page Include="MainWindow1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,6 +126,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\PolygonWaveFormControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -1,4 +1,9 @@
-﻿namespace TestNAudio.Model.Light
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Media.Animation;
+using System.Xml.Serialization;
+
+namespace TestNAudio.Model.Light
 {
     public class LightActionAnimation : LightDecorator
     {

@@ -28,6 +28,14 @@ namespace TestNAudio.Model.Light
 
         public event EventHandler ValueChanged;
 
+        public int Level
+        {
+            get
+            {
+                return 0;
+            }
+        }
+
         public int Address { get; private set; }
 
         public string Name

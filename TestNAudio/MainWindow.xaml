@@ -62,8 +62,6 @@
                                         <Grid Opacity=".6">
                                             <Ellipse Width="200" Height="300" Margin="50,0" Opacity="{Binding Provider.Value, Converter={StaticResource OpacityConverter}}">
                                                 <Ellipse.Fill>
-                                                    <!--<SolidColorBrush Color="{Binding Value, Converter={StaticResource ColorConverter}}" />-->
-                                                    <!--<SolidColorBrush Color="LightCoral"/>-->
                                                     <RadialGradientBrush>
                                                         <GradientStop Offset=".6" Color="{Binding BulbColor}"/>
                                                         <GradientStop Offset="1" Color="Transparent"/>
@@ -76,27 +74,22 @@
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type testNAudio:RgbProjector}">
                                     <Border >
+                                        <Border.Resources>
+                                            <testNAudio:ThreeByteToColorConverter x:Key="ThreeByteToColorConverter" Alpha="0xFF"></testNAudio:ThreeByteToColorConverter>
+                                        </Border.Resources>
                                         <Grid Opacity=".6">
                                             <Ellipse Width="200" Height="300" Margin="50,0" Opacity="{Binding RedProvider.Value, Converter={StaticResource OpacityConverter}}">
                                                 <Ellipse.Fill>
                                                     <RadialGradientBrush>
-                                                        <GradientStop Offset=".6" Color="Red"/>
-                                                        <GradientStop Offset="1" Color="Transparent"/>
-                                                    </RadialGradientBrush>
-                                                </Ellipse.Fill>
-                                            </Ellipse>
-                                            <Ellipse Width="200" Height="300" Margin="50,0" Opacity="{Binding GreenProvider.Value, Converter={StaticResource OpacityConverter}}">
-                                                <Ellipse.Fill>
-                                                    <RadialGradientBrush>
-                                                        <GradientStop Offset=".6" Color="Lime"/>
-                                                        <GradientStop Offset="1" Color="Transparent"/>
-                                                    </RadialGradientBrush>
-                                                </Ellipse.Fill>
-                                            </Ellipse>
-                                            <Ellipse Width="200" Height="300" Margin="50,0" Opacity="{Binding BlueProvider.Value, Converter={StaticResource OpacityConverter}}">
-                                                <Ellipse.Fill>
-                                                    <RadialGradientBrush>
-                                                        <GradientStop Offset=".6" Color="Blue"/>
+                                                        <GradientStop Offset=".6">
+                                                            <GradientStop.Color>
+                                                                <MultiBinding Converter="{StaticResource ThreeByteToColorConverter}">
+                                                                    <Binding Path="RedProvider.Value"/>
+                                                                    <Binding Path="GreenProvider.Value"/>
+                                                                    <Binding Path="BlueProvider.Value"/>
+                                                                </MultiBinding>
+                                                            </GradientStop.Color>
+                                                        </GradientStop>
                                                         <GradientStop Offset="1" Color="Transparent"/>
                                                     </RadialGradientBrush>
                                                 </Ellipse.Fill>
@@ -112,8 +105,8 @@
                             </ItemsControl.ItemsPanel>
                         </ItemsControl>
                     </StackPanel>
-                
-                        <ItemsControl ItemsSource="{Binding ElementName=rootWnd, Path=AudioControllers}">
+
+                    <ItemsControl ItemsSource="{Binding ElementName=rootWnd, Path=AudioControllers}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel />

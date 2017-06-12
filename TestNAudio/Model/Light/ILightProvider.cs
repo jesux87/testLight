@@ -4,6 +4,8 @@ namespace TestNAudio.Model.Light
 {
     public interface ILightProvider : ILightController
     {
+        int Level { get; }
+
         int Address { get; }
     }
     public interface ILightController
