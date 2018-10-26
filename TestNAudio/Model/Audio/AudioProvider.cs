@@ -1,18 +1,11 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Input;
-
-using Common;
-
-using NAudio.Wave;
-
-using NAudioWpfDemo;
-
-using WpfTools;
-
-namespace TestNAudio.Model.Audio
+﻿namespace TestNAudio.Model.Audio
 {
+    using System;
+    using System.Windows.Input;
+    using Common;
+    using NAudio.Wave;
+    using WpfTools;
+
     public class AudioProvider : NotifyPropertyChangedObject, IAudioProvider
     {
         private readonly WaveChannel32 channel;

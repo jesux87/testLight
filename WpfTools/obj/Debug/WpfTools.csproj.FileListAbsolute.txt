@@ -19,3 +19,11 @@ C:\Repositories\testLight\WpfTools\obj\Debug\WpfTools.Properties.Resources.resou
 C:\Repositories\testLight\WpfTools\obj\Debug\WpfTools.csproj.GenerateResource.Cache
 C:\Repositories\testLight\WpfTools\obj\Debug\WpfTools.dll
 C:\Repositories\testLight\WpfTools\obj\Debug\WpfTools.pdb
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\WpfTools\bin\Debug\WpfTools.dll
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\WpfTools\bin\Debug\WpfTools.pdb
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\WpfTools\obj\Debug\WpfTools.csprojAssemblyReference.cache
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\WpfTools\obj\Debug\WpfTools.Properties.Resources.resources
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\WpfTools\obj\Debug\WpfTools.csproj.GenerateResource.cache
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\WpfTools\obj\Debug\WpfTools.csproj.CoreCompileInputs.cache
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\WpfTools\obj\Debug\WpfTools.dll
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\WpfTools\obj\Debug\WpfTools.pdb

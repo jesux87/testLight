@@ -44,7 +44,7 @@ namespace TestNAudio
         {
             this.InitCommands();
 
-            /*this.InitControleurs();*/
+            this.InitControleurs();
 
             this.InitializeComponent();
 
@@ -213,27 +213,27 @@ namespace TestNAudio
              this.Projectors = new List<object>();
 
              var rgb = new LightRgbProvider(3, 4, 5);
-             var r = new LightManualSimpleFader(new FaderValueControleur(KeyboardControlMapping.YH_KeyboardLine()), rgb.Red, "Rouge");
-             var g = new LightManualSimpleFader(new FaderValueControleur(KeyboardControlMapping.YH_KeyboardLine()), rgb.Green, "Vert");
-             var mult = new LightManualMultipleFader(new FaderValueControleur(KeyboardControlMapping.UJ_KeyboardLine()), new[] { new LightProvider(1), new LightProvider(2), rgb.Blue});
-             var manF1 = new LightManualSimpleFader(new FaderValueControleur(KeyboardControlMapping.OL_KeyboardLine(KeyboardControlMode.ThreeThirds)), mult.LightProviders[0]);
-             this.manF3 = new LightManualSimpleFader(new FaderValueControleur(KeyboardControlMapping.IK_KeyboardLine()), mult.LightProviders[1]);
-             var manF2 = new LightManualSimpleFader(new FaderValueControleur(KeyboardControlMapping.PM_KeyboardLine()), manF1);
-             //this.autoManF3 = new LightActionAnimation(new AnimationValueControleur(new KeyGesture(Key.NumPad1))
-             //                                             {
-             //                                                 Value = 1,
-             //                                                 CurveDirection = CurveDirection.Descendant,
-             //                                                 Duration = new Duration(TimeSpan.FromSeconds(3)),
-             //                                                 EasingFunction = new BounceEase()
-             //                                                                      {
-             //                                                                          Bounciness = 5,
-             //                                                                          Bounces = 8,
-             //                                                                          EasingMode = EasingMode.EaseOut
-             //                                                                      }
-             //                                             }, manF2);
+             var r = new LightManualSimpleFader(new FaderValueControleur(KeyboardLineControlMapping.YH_KeyboardLine()), rgb.Red, "Rouge");
+             var g = new LightManualSimpleFader(new FaderValueControleur(KeyboardLineControlMapping.YH_KeyboardLine()), rgb.Green, "Vert");
+             var mult = new LightManualMultipleFader(new FaderValueControleur(KeyboardLineControlMapping.UJ_KeyboardLine()), new[] { new LightProvider(1), new LightProvider(2), rgb.Blue});
+             var manF1 = new LightManualSimpleFader(new FaderValueControleur(KeyboardLineControlMapping.OL_KeyboardLine(KeyboardLineControlMode.ThreeThirds)), mult.LightProviders[0]);
+             this.manF3 = new LightManualSimpleFader(new FaderValueControleur(KeyboardLineControlMapping.IK_KeyboardLine()), mult.LightProviders[1]);
+             var manF2 = new LightManualSimpleFader(new FaderValueControleur(KeyboardLineControlMapping.PM_KeyboardLine()), manF1);
+            this.autoManF3 = new LightActionAnimation(new AnimationValueControleur(new KeyGesture(Key.NumPad1))
+            {
+                Value = 1,
+                CurveDirection = CurveDirection.Descendant,
+                Duration = new Duration(TimeSpan.FromSeconds(3)),
+                EasingFunction = new BounceEase()
+                {
+                    Bounciness = 5,
+                    Bounces = 8,
+                    EasingMode = EasingMode.EaseOut
+                }
+            }, manF2);
 
 
-             this.LightControllers = new List<ILightController>
+            this.LightControllers = new List<ILightController>
                                        {
                                            //new LightActionAnimation(new AnimationValueControleur(Key.NumPad0),  new LightProvider(2)),
                                            //new LightProvider(3),

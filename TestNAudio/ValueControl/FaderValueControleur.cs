@@ -31,11 +31,11 @@ namespace TestNAudio.ValueControl
 
         public static readonly DependencyProperty LowValueModifierProperty = DependencyProperty.Register("LowValueModifier", typeof(double), typeof(FaderValueControleur), new PropertyMetadata(.02));
 
-        private KeyboardControlMapping map;
+        private KeyboardLineControlMapping map;
 
         private readonly Collection<InputBinding> inputBindings = new Collection<InputBinding>();
 
-        public FaderValueControleur(KeyboardControlMapping map)
+        public FaderValueControleur(KeyboardLineControlMapping map):this()
         {
             this.Map = map;
         }
@@ -49,19 +49,19 @@ namespace TestNAudio.ValueControl
             switch (valueModifier)
             {
                 case -2:
-                    if (this.map.ControlMode == KeyboardControlMode.ThreeThirds) this.Value = this.Minimum;
+                    if (this.map.ControlMode == KeyboardLineControlMode.ThreeThirds) this.Value = this.Minimum;
                     else this.Value = Math.Min(this.Maximum, Math.Max(this.Minimum, this.Value - this.HighValueModifier));
                     break;
                 case -1:
-                    if (this.map.ControlMode == KeyboardControlMode.ThreeThirds) this.Value = this.Minimum + (this.Maximum - this.Minimum) * .3333;
+                    if (this.map.ControlMode == KeyboardLineControlMode.ThreeThirds) this.Value = this.Minimum + (this.Maximum - this.Minimum) * .3333;
                     else this.Value = Math.Min(this.Maximum, Math.Max(this.Minimum, this.Value - this.LowValueModifier));
                     break;
                 case 1:
-                    if (this.map.ControlMode == KeyboardControlMode.ThreeThirds) this.Value = this.Minimum + (this.Maximum - this.Minimum) * .6667;
+                    if (this.map.ControlMode == KeyboardLineControlMode.ThreeThirds) this.Value = this.Minimum + (this.Maximum - this.Minimum) * .6667;
                     else this.Value = Math.Min(this.Maximum, Math.Max(this.Minimum, this.Value + this.LowValueModifier));
                     break;
                 case 2:
-                    if (this.map.ControlMode == KeyboardControlMode.ThreeThirds) this.Value = this.Maximum;
+                    if (this.map.ControlMode == KeyboardLineControlMode.ThreeThirds) this.Value = this.Maximum;
                     else this.Value = Math.Min(this.Maximum, Math.Max(this.Minimum, this.Value + this.HighValueModifier));
                     break;
             }
@@ -153,7 +153,7 @@ namespace TestNAudio.ValueControl
             }
         }
 
-        public KeyboardControlMapping Map
+        public KeyboardLineControlMapping Map
         {
             set
             {

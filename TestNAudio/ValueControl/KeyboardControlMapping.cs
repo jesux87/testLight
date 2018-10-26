@@ -2,17 +2,22 @@
 
 namespace TestNAudio.ValueControl
 {
-    public enum KeyboardControlMode
+    public class KeyboardKeyControlMapping
+    {
+
+    }
+
+    public enum KeyboardLineControlMode
     {
         Linear,
         ThreeThirds
     }
 
-    public class KeyboardControlMapping
+    public class KeyboardLineControlMapping
     {
         public ModifierKeys ModifierKeys { get; set; }
 
-        public KeyboardControlMode ControlMode { get; set; }
+        public KeyboardLineControlMode ControlMode { get; set; }
 
         internal Key LowUpKey { get; private set; }
 
@@ -22,89 +27,111 @@ namespace TestNAudio.ValueControl
 
         internal Key HighDownKey { get; private set; }
 
-        public KeyboardControlMapping(Key highUpKey = Key.None, Key lowUpKey = Key.None, Key lowDownKey = Key.None, Key highDownKey = Key.None)
+        public KeyboardLineControlMapping(Key highUpKey = Key.None, Key lowUpKey = Key.None,
+            Key lowDownKey = Key.None, Key highDownKey = Key.None, ModifierKeys modifier = ModifierKeys.None)
         {
-            this.LowUpKey = lowUpKey;
-            this.LowDownKey = lowDownKey;
-            this.HighUpKey = highUpKey;
-            this.HighDownKey = highDownKey;
+            LowUpKey = lowUpKey;
+            LowDownKey = lowDownKey;
+            HighUpKey = highUpKey;
+            HighDownKey = highDownKey;
+            ModifierKeys = modifier;
         }
 
-        public static KeyboardControlMapping AQ_KeyboardLine(KeyboardControlMode controlMode = KeyboardControlMode.Linear)
+        public static KeyboardLineControlMapping AQ_KeyboardLine(
+            KeyboardLineControlMode controlMode = KeyboardLineControlMode.Linear,
+            ModifierKeys modifier = ModifierKeys.None)
         {
-            return new KeyboardControlMapping(Key.D1, Key.A, Key.Q, Key.W)
-                       {
-                           ControlMode = controlMode
-                       };
+            return new KeyboardLineControlMapping(Key.D1, Key.A, Key.Q, Key.W, modifier)
+            {
+                ControlMode = controlMode
+            };
         }
 
-        public static KeyboardControlMapping ZS_KeyboardLine(KeyboardControlMode controlMode = KeyboardControlMode.Linear)
+        public static KeyboardLineControlMapping ZS_KeyboardLine(
+            KeyboardLineControlMode controlMode = KeyboardLineControlMode.Linear,
+            ModifierKeys modifier = ModifierKeys.None)
         {
-            return new KeyboardControlMapping(Key.D2, Key.Z, Key.S, Key.X)
-                       {
-                           ControlMode = controlMode
-                       };
+            return new KeyboardLineControlMapping(Key.D2, Key.Z, Key.S, Key.X, modifier)
+            {
+                ControlMode = controlMode
+            };
         }
 
-        public static KeyboardControlMapping ED_KeyboardLine(KeyboardControlMode controlMode = KeyboardControlMode.Linear)
+        public static KeyboardLineControlMapping ED_KeyboardLine(
+            KeyboardLineControlMode controlMode = KeyboardLineControlMode.Linear,
+            ModifierKeys modifier = ModifierKeys.None)
         {
-            return new KeyboardControlMapping(Key.D3, Key.E, Key.D, Key.C)
-                       {
-                           ControlMode = controlMode
-                       };
+            return new KeyboardLineControlMapping(Key.D3, Key.E, Key.D, Key.C, modifier)
+            {
+                ControlMode = controlMode
+            };
         }
 
-        public static KeyboardControlMapping RF_KeyboardLine(KeyboardControlMode controlMode = KeyboardControlMode.Linear)
+        public static KeyboardLineControlMapping RF_KeyboardLine(
+            KeyboardLineControlMode controlMode = KeyboardLineControlMode.Linear,
+            ModifierKeys modifier = ModifierKeys.None)
         {
-            return new KeyboardControlMapping(Key.D4, Key.R, Key.F, Key.V)
-                       {
-                           ControlMode = controlMode
-                       };
+            return new KeyboardLineControlMapping(Key.D4, Key.R, Key.F, Key.V, modifier)
+            {
+                ControlMode = controlMode
+            };
         }
 
-        public static KeyboardControlMapping TG_KeyboardLine(KeyboardControlMode controlMode = KeyboardControlMode.Linear)
+        public static KeyboardLineControlMapping TG_KeyboardLine(
+            KeyboardLineControlMode controlMode = KeyboardLineControlMode.Linear,
+            ModifierKeys modifier = ModifierKeys.None)
         {
-            return new KeyboardControlMapping(Key.D5, Key.T, Key.G, Key.B)
-                       {
-                           ControlMode = controlMode
-                       };
+            return new KeyboardLineControlMapping(Key.D5, Key.T, Key.G, Key.B, modifier)
+            {
+                ControlMode = controlMode
+            };
         }
 
-        public static KeyboardControlMapping YH_KeyboardLine(KeyboardControlMode controlMode = KeyboardControlMode.Linear)
+        public static KeyboardLineControlMapping YH_KeyboardLine(
+            KeyboardLineControlMode controlMode = KeyboardLineControlMode.Linear,
+            ModifierKeys modifier = ModifierKeys.None)
         {
-            return new KeyboardControlMapping(Key.D6, Key.Y, Key.H, Key.N);
+            return new KeyboardLineControlMapping(Key.D6, Key.Y, Key.H, Key.N, modifier);
         }
 
-        public static KeyboardControlMapping UJ_KeyboardLine(KeyboardControlMode controlMode = KeyboardControlMode.Linear)
+        public static KeyboardLineControlMapping UJ_KeyboardLine(
+            KeyboardLineControlMode controlMode = KeyboardLineControlMode.Linear,
+            ModifierKeys modifier = ModifierKeys.None)
         {
-            return new KeyboardControlMapping(Key.D7, Key.U, Key.J, Key.OemComma)
-                       {
-                           ControlMode = controlMode
-                       };
+            return new KeyboardLineControlMapping(Key.D7, Key.U, Key.J, Key.OemComma, modifier)
+            {
+                ControlMode = controlMode
+            };
         }
 
-        public static KeyboardControlMapping IK_KeyboardLine(KeyboardControlMode controlMode = KeyboardControlMode.Linear)
+        public static KeyboardLineControlMapping IK_KeyboardLine(
+            KeyboardLineControlMode controlMode = KeyboardLineControlMode.Linear,
+            ModifierKeys modifier = ModifierKeys.None)
         {
-            return new KeyboardControlMapping(Key.D8, Key.I, Key.K, Key.OemPeriod)
-                       {
-                           ControlMode = controlMode
-                       };
+            return new KeyboardLineControlMapping(Key.D8, Key.I, Key.K, Key.OemPeriod, modifier)
+            {
+                ControlMode = controlMode
+            };
         }
 
-        public static KeyboardControlMapping OL_KeyboardLine(KeyboardControlMode controlMode = KeyboardControlMode.Linear)
+        public static KeyboardLineControlMapping OL_KeyboardLine(
+            KeyboardLineControlMode controlMode = KeyboardLineControlMode.Linear,
+            ModifierKeys modifier = ModifierKeys.None)
         {
-            return new KeyboardControlMapping(Key.D9, Key.O, Key.L, Key.OemQuestion)
-                       {
-                           ControlMode = controlMode
-                       };
+            return new KeyboardLineControlMapping(Key.D9, Key.O, Key.L, Key.OemQuestion, modifier)
+            {
+                ControlMode = controlMode
+            };
         }
 
-        public static KeyboardControlMapping PM_KeyboardLine(KeyboardControlMode controlMode = KeyboardControlMode.Linear)
+        public static KeyboardLineControlMapping PM_KeyboardLine(
+            KeyboardLineControlMode controlMode = KeyboardLineControlMode.Linear,
+            ModifierKeys modifier = ModifierKeys.None)
         {
-            return new KeyboardControlMapping(Key.D0, Key.P, Key.M, Key.Oem8)
-                       {
-                           ControlMode = controlMode
-                       };
+            return new KeyboardLineControlMapping(Key.D0, Key.P, Key.M, Key.Oem8, modifier)
+            {
+                ControlMode = controlMode
+            };
         }
     }
 }

@@ -1,8 +1,5 @@
-﻿using System.Windows;
-
-namespace TestNAudio.Model.Audio
+﻿namespace TestNAudio.Model.Audio
 {
-    using System;
     using NAudio.Wave;
 
     public abstract class AudioDecorator : IAudioProvider

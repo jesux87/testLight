@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.Remoting.Messaging;
 
 using Common;
 
@@ -32,7 +30,7 @@ namespace TestNAudio.Model.Audio
                 this.frequency = frequency;
                 this.qFactor = qFactor;
                 this.filterType = filterType;
-                this.valueControleur = new FaderValueControleur(new KeyboardControlMapping()) { Maximum = 30, Minimum = -30 };
+                this.valueControleur = new FaderValueControleur(new KeyboardLineControlMapping()) { Maximum = 30, Minimum = -30 };
                 this.ValueControleur.ValueChanged += (sender, args) =>
                     {
                         this.Filter.SetPeakingEq(this.formatSampleRate, this.frequency, this.qFactor, this.Gain);

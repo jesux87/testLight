@@ -21,9 +21,9 @@
         <!--séquence audio/light automatique-->
         <Border Grid.Column="0" Grid.Row="0">
             <Grid DataContext="{Binding ElementName=rootWnd}">
-                <Grid.Background>
+                <!--<Grid.Background>
                     <ImageBrush ImageSource="C:\Users\DV17590N\Images\Theatre_Fond_2.png"/>
-                </Grid.Background>
+                </Grid.Background>-->
                 <Grid.Resources>
                     <testNAudio:FaderValueToOpacityConverter x:Key="OpacityConverter"/>
                     <testNAudio:FaderValueToColorConverter x:Key="ColorConverter"/>

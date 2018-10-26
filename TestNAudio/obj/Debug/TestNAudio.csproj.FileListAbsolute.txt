@@ -64,3 +64,31 @@ C:\Repositories\testLight\TestNAudio\obj\Debug\TestNAudio.Properties.Resources.r
 C:\Repositories\testLight\TestNAudio\obj\Debug\TestNAudio.csproj.GenerateResource.Cache
 C:\Repositories\testLight\TestNAudio\obj\Debug\TestNAudio.exe
 C:\Repositories\testLight\TestNAudio\obj\Debug\TestNAudio.pdb
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\bin\Debug\TestNAudio.exe.config
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\bin\Debug\TestNAudio.exe
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\bin\Debug\TestNAudio.pdb
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\bin\Debug\MoonPdfLib.dll
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\bin\Debug\MouseKeyboardActivityMonitor.dll
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\bin\Debug\NAudio.dll
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\bin\Debug\NAudio.WindowsMediaFormat.dll
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\bin\Debug\WpfTools.dll
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\bin\Debug\WpfTools.pdb
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\TestNAudio.csprojAssemblyReference.cache
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\View\PolygonWaveFormControl.baml
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\MainWindow1.g.cs
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\MainWindow.g.cs
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\View\PolygonWaveFormControl.g.cs
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\App.g.cs
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\TestNAudio_Content.g.cs
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\TestNAudio_MarkupCompile.cache
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\TestNAudio_MarkupCompile.lref
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\MainWindow1.baml
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\MainWindow.baml
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\TestNAudio.g.resources
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\TestNAudio.Properties.Resources.resources
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\TestNAudio.csproj.GenerateResource.cache
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\TestNAudio.csproj.CoreCompileInputs.cache
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\TestNAudio.csproj.CopyComplete
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\TestNAudio.exe
+C:\Users\David VEYSSIERE\Documents\Visual Studio 2017\Projects\testLight\TestNAudio\obj\Debug\TestNAudio.pdb

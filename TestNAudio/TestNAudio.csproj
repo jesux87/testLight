@@ -82,6 +82,7 @@
     <Compile Include="Model\Light\LightDecorator.cs" />
     <Compile Include="Model\Light\LightProvider.cs" />
     <Compile Include="Model\Light\ILightProvider.cs" />
+    <Compile Include="Model\Sequence\Sequencer.cs" />
     <Compile Include="Model\XmlModel\AudioFader.cs" />
     <Compile Include="Model\XmlModel\AudioSequence.cs" />
     <Compile Include="Model\XmlModel\AudioSource.cs" />
