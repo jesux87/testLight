@@ -48,7 +48,7 @@ namespace TestNAudio
             }
         }
 
-        public AnimationsControleur(KeyGesture gesture)
+        public AnimationsControleur(KeyGesture gesture) : this()
         {
             this.Gesture = gesture;
         }
@@ -80,6 +80,25 @@ namespace TestNAudio
             {
                 this.SetValue(DurationProperty, value);
             }
+        }
+        private readonly Collection<InputBinding> inputBindings = new Collection<InputBinding>();
+        private InputBinding inputBinding;
+        public KeyGesture Gesture
+        {
+            set
+            {
+                if (this.inputBinding != null)
+                    this.inputBindings.Clear();
+                this.inputBinding = new InputBinding(new RelayCommand(p => this.LaunchSequence()), value);
+                this.inputBindings.Add(this.inputBinding);
+            }
+        }
+        public AnimationValueControleur(KeyGesture gesture) : this()
+        {
+            this.Gesture = gesture;
+        }
+        public AnimationValueControleur()
+        {
         }
 
         public static readonly DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(double), typeof(AnimationValueControleur), new PropertyMetadata(default(double), ValueChangedCallback));

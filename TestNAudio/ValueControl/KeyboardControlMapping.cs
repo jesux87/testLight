@@ -2,11 +2,6 @@
 
 namespace TestNAudio.ValueControl
 {
-    public class KeyboardKeyControlMapping
-    {
-
-    }
-
     public enum KeyboardLineControlMode
     {
         Linear,
