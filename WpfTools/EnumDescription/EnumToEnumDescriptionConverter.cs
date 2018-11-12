@@ -25,18 +25,18 @@ namespace Common.EnumDescription
                 return string.Empty;
             }
 
-            if (this.TypeDescription == EnumTypeDescription.Auto)
+            if (TypeDescription == EnumTypeDescription.Auto)
             {
                 var autoLimit = parameter as int?;
                 if (autoLimit.HasValue)
                 {
-                    return this.AutoConvert(attribute, autoLimit.Value);
+                    return AutoConvert(attribute, autoLimit.Value);
                 }
 
-                return this.ManualConvert(EnumTypeDescription.Litteral, attribute);
+                return ManualConvert(EnumTypeDescription.Litteral, attribute);
             }
 
-            return this.ManualConvert(this.TypeDescription, attribute);
+            return ManualConvert(TypeDescription, attribute);
         }
         
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

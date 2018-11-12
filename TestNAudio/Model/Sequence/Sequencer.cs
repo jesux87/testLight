@@ -27,19 +27,19 @@ namespace TestNAudio.Model.Sequence
         {
             get
             {
-                return this.inputBindings;
+                return inputBindings;
             }
         }
         
         public Sequencer(KeyGesture gesture)
         {
-            this.gesture = gesture;
-            this.InitCommands();
+            gesture = gesture;
+            InitCommands();
         }
 
         private void InitCommands()
         {
-            this.inputBindings.Add(new InputBinding(new RelayCommand(p => this.LaunchSequences()), this.gesture));
+            inputBindings.Add(new InputBinding(new RelayCommand(p => LaunchSequences()), gesture));
         }
 
         private void LaunchSequences()
@@ -54,8 +54,8 @@ namespace TestNAudio.Model.Sequence
 
         public AudioVolumeSequence(AudioVolume volumeProvider)
         {
-            this.volumeProvider = volumeProvider;
-            this.Changed += OnChanged;
+            volumeProvider = volumeProvider;
+            Changed += OnChanged;
         }
 
         private void OnChanged(object sender, EventArgs eventArgs)
@@ -65,14 +65,14 @@ namespace TestNAudio.Model.Sequence
 
         private void truc()
         {
-            //Storyboard.SetTarget(this, this.volumeProvider);
+            //Storyboard.SetTarget(this, volumeProvider);
             //Storyboard.SetTargetProperty(this,);
 
         }
 
         protected override Freezable CreateInstanceCore()
         {
-            return (Freezable)new AudioVolumeSequence(this.volumeProvider);
+            return (Freezable)new AudioVolumeSequence(volumeProvider);
         }
 
         public override Type TargetPropertyType
@@ -98,11 +98,11 @@ namespace TestNAudio.Model.Sequence
     //    {
     //        get
     //        {
-    //            return (byte)this.GetValue(AnimatedValueProperty);
+    //            return (byte)GetValue(AnimatedValueProperty);
     //        }
     //        set
     //        {
-    //            this.SetValue(AnimatedValueProperty, value);
+    //            SetValue(AnimatedValueProperty, value);
     //        }
     //    }
 
@@ -110,7 +110,7 @@ namespace TestNAudio.Model.Sequence
     //    {
     //        get
     //        {
-    //            return this.provider.Minimum;
+    //            return provider.Minimum;
     //        }
     //    }
 
@@ -118,7 +118,7 @@ namespace TestNAudio.Model.Sequence
     //    {
     //        get
     //        {
-    //            return this.provider.Maximum;
+    //            return provider.Maximum;
     //        }
     //    }
 
@@ -126,7 +126,7 @@ namespace TestNAudio.Model.Sequence
     //    {
     //        get
     //        {
-    //            return this.provider.Name;
+    //            return provider.Name;
     //        }
     //    }
 
@@ -142,8 +142,8 @@ namespace TestNAudio.Model.Sequence
 
     //    public LightSequence(ILightProvider provider)
     //    {
-    //        this.provider = provider;
-    //        this.Changed += OnChanged;
+    //        provider = provider;
+    //        Changed += OnChanged;
     //    }
 
     //    private void OnChanged(object sender, EventArgs eventArgs)
@@ -153,14 +153,14 @@ namespace TestNAudio.Model.Sequence
 
     //    private void truc()
     //    {
-    //        //Storyboard.SetTarget(this, this.volumeProvider);
+    //        //Storyboard.SetTarget(this, volumeProvider);
     //        //Storyboard.SetTargetProperty(this,);
 
     //    }
 
     //    protected override Freezable CreateInstanceCore()
     //    {
-    //        return (Freezable)new LightSequence(this.provider);
+    //        return (Freezable)new LightSequence(provider);
     //    }
         
     //}

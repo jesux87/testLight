@@ -33,11 +33,11 @@ namespace NAudioWpfDemo
             {
                 throw new ArgumentException("FFT Length must be a power of two");
             }
-            this.m = (int)Math.Log(fftLength, 2.0);
-            this.fftLength = fftLength;
-            this.fftBuffer = new Complex[fftLength];
-            this.fftArgs = new FftEventArgs(fftBuffer);
-            this.source = source;
+            m = (int)Math.Log(fftLength, 2.0);
+            fftLength = fftLength;
+            fftBuffer = new Complex[fftLength];
+            fftArgs = new FftEventArgs(fftBuffer);
+            source = source;
         }
 
         static bool IsPowerOfTwo(int x)

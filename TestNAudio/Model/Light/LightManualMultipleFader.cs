@@ -9,26 +9,26 @@ namespace TestNAudio.Model.Light
 {
     public class LightManualMultipleFader : NotifyPropertyChangedObject, ILightController //: LightDecorator
     {
-        private readonly FaderValueControleur valueControleur;
+        private readonly FaderValueControleur _valueControleur;
 
-        private string name;
+        private string _name;
 
         public LightManualMultipleFader(FaderValueControleur valueControleur, ILightProvider[] lightProviders, string name = null)
             //: base(lightProvider)
         {
-            this.name = name;
-            this.valueControleur = valueControleur;
-            this.LightProviders = lightProviders.Select(lp => new LightManualSimpleFader(valueControleur, lp)).ToArray();
-            this.valueControleur.ValueChanged += (sender, args) => this.RaiseValueChanged();
+            _name = name;
+            _valueControleur = valueControleur;
+            LightProviders = lightProviders.Select(lp => new LightManualSimpleFader(valueControleur, lp)).ToArray();
+            valueControleur.ValueChanged += (sender, args) => RaiseValueChanged();
         }
 
         protected void RaiseValueChanged()
         {
-            if (this.ValueChanged != null)
+            if (ValueChanged != null)
             {
-                this.ValueChanged(this, new EventArgs());
+                ValueChanged(this, new EventArgs());
             }
-            this.RaisePropertyChanged(() => this.Value);
+            RaisePropertyChanged(() => Value);
         }
 
 
@@ -38,7 +38,7 @@ namespace TestNAudio.Model.Light
         {
             get
             {
-                return this.valueControleur;
+                return _valueControleur;
             }
         }
 
@@ -46,7 +46,7 @@ namespace TestNAudio.Model.Light
         {
             get
             {
-                return (byte)(this.ValueControleur.Value * 255);
+                return (byte)(ValueControleur.Value * 255);
             }
         }
 
@@ -64,7 +64,7 @@ namespace TestNAudio.Model.Light
         {
             get
             {
-                return this.name;
+                return _name;
             }
         }
 

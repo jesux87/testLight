@@ -18,16 +18,16 @@ namespace Common.EnumDescription
 
         public EnumDescriptionAttribute(string cultureInfoName)
         {
-            this.cultureInfo = CultureInfo.GetCultureInfo(cultureInfoName);
+            cultureInfo = CultureInfo.GetCultureInfo(cultureInfoName);
         }
 
         [Obsolete("merci d'utiliser EnumDescriptionAttribute(string cultureInfoName) ansi que les propriétés en dynamique")]
         public EnumDescriptionAttribute(string cultureInfoName, string fullDescription = null, string shortDescription = null, string litteralDescription = null)
             : this(cultureInfoName)
         {
-            this.fullDescription = fullDescription;
-            this.shortDescription = shortDescription;
-            this.litteralDescription = litteralDescription;
+            fullDescription = fullDescription;
+            shortDescription = shortDescription;
+            litteralDescription = litteralDescription;
         }
 
         /// <summary>
@@ -37,12 +37,12 @@ namespace Common.EnumDescription
         {
             get
             {
-                return this.litteralDescription;
+                return litteralDescription;
             }
 
             set
             {
-                this.litteralDescription = value;
+                litteralDescription = value;
             }
         }
 
@@ -53,12 +53,12 @@ namespace Common.EnumDescription
         {
             get
             {
-                return this.shortDescription;
+                return shortDescription;
             }
 
             set
             {
-                this.shortDescription = value;
+                shortDescription = value;
             }
         }
 
@@ -69,12 +69,12 @@ namespace Common.EnumDescription
         {
             get
             {
-                return this.fullDescription;
+                return fullDescription;
             }
 
             set
             {
-                this.fullDescription = value;
+                fullDescription = value;
             }
         }
 
@@ -85,12 +85,12 @@ namespace Common.EnumDescription
         {
             get
             {
-                return this.icon;
+                return icon;
             }
 
             set
             {
-                this.icon = value;
+                icon = value;
             }
         }
 
@@ -98,7 +98,7 @@ namespace Common.EnumDescription
         {
             get
             {
-                return this.cultureInfo;
+                return cultureInfo;
             }
         }
     }

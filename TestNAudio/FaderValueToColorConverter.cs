@@ -18,20 +18,20 @@ namespace TestNAudio
         {
             set
             {
-                this.maxFactor = value;
+                maxFactor = value;
             }
         }
 
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             var val = (byte)value;
-            return val * this.maxFactor / 0xff;
+            return val * maxFactor / 0xff;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             var val = (double)value;
-            return (byte)(val * 0xff / this.maxFactor);
+            return (byte)(val * 0xff / maxFactor);
         }
     }
     
@@ -50,7 +50,7 @@ namespace TestNAudio
         {
             set
             {
-                this.redDepends = value;
+                redDepends = value;
             }
         }
 
@@ -58,7 +58,7 @@ namespace TestNAudio
         {
             set
             {
-                this.greenDepends = value;
+                greenDepends = value;
             }
         }
 
@@ -66,7 +66,7 @@ namespace TestNAudio
         {
             set
             {
-                this.blueDepends = value;
+                blueDepends = value;
             }
         }
 
@@ -74,7 +74,7 @@ namespace TestNAudio
         {
             set
             {
-                this.redBaseValue = value;
+                redBaseValue = value;
             }
         }
 
@@ -83,7 +83,7 @@ namespace TestNAudio
         {
             set
             {
-                this.greenBaseValue = value;
+                greenBaseValue = value;
             }
         }
 
@@ -91,7 +91,7 @@ namespace TestNAudio
         {
             set
             {
-                this.blueBaseValue = value;
+                blueBaseValue = value;
             }
         }
 
@@ -99,9 +99,9 @@ namespace TestNAudio
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             var val = (byte)value;
-            var r = this.redDepends ? (byte)(this.redBaseValue * val / 0xff) : this.redBaseValue;
-            var g = this.greenDepends ? (byte)(this.greenBaseValue * val / 0xff) : this.greenBaseValue;
-            var b = this.blueDepends ? (byte)(this.blueBaseValue * val / 0xff) : this.blueBaseValue;
+            var r = redDepends ? (byte)(redBaseValue * val / 0xff) : redBaseValue;
+            var g = greenDepends ? (byte)(greenBaseValue * val / 0xff) : greenBaseValue;
+            var b = blueDepends ? (byte)(blueBaseValue * val / 0xff) : blueBaseValue;
             return Color.FromRgb(r, g, b);
         }
 

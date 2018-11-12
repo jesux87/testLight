@@ -15,10 +15,10 @@ namespace TestNAudio.Model.XmlModel
         public string SerialBulbColor {
             get
             {
-                return this.BulbColor.ToString();
+                return BulbColor.ToString();
             } set
         {
-            this.BulbColor = (Color)ColorConverter.ConvertFromString(value);
+            BulbColor = (Color)ColorConverter.ConvertFromString(value);
         } }
     }
 }

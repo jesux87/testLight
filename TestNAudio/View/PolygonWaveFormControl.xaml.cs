@@ -22,9 +22,9 @@ namespace NAudioWpfDemo
 
         public PolygonWaveFormControl()
         {
-            this.SizeChanged += OnSizeChanged;
+            SizeChanged += OnSizeChanged;
             InitializeComponent();
-            waveForm.Stroke = this.Foreground;
+            waveForm.Stroke = Foreground;
             waveForm.StrokeThickness = 1;
             waveForm.Fill = new SolidColorBrush(Colors.Bisque);
             mainCanvas.Children.Add(waveForm);            
@@ -36,8 +36,8 @@ namespace NAudioWpfDemo
             renderPosition = 0;
             ClearAllPoints();
 
-            this.yTranslate = this.ActualHeight / 2;
-            this.yScale = this.ActualHeight / 2;
+            yTranslate = ActualHeight / 2;
+            yScale = ActualHeight / 2;
         }
 
         private void ClearAllPoints()

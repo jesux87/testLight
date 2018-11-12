@@ -12,19 +12,17 @@
 
         public AudioProvider(WaveStream stream)
         {
-            this.OutPutWave = new WaveOutEvent();
-            this.channel = new WaveChannel32(stream);
-            this.OutPutWave.Init(this);
+            OutPutWave = new WaveOutEvent();
+            channel = new WaveChannel32(stream);
+            OutPutWave.Init(this);
             
-            this.playPauseCommand = new RelayCommand(p =>
+            playPauseCommand = new RelayCommand(p =>
                                         {
-                                            this.playing = !playing;
+                                            playing = !playing;
                                             if (playing)
-                                                this.OutPutWave.Play();
+                                                OutPutWave.Play();
                                             else
-                                            {
-                                                this.OutPutWave.Pause();
-                                            }
+                                                OutPutWave.Pause();
                                         });
         }
 
@@ -38,35 +36,30 @@
         {
             get
             {
-                return this.channel;
+                return channel;
             }
         }
-
-        void truc()
-        {
-            //this.channel.ReadAsync()
-        }
-
+        
         public int Read(byte[] buffer, int offset, int count)
         {
-            return this.Parent != null ? this.Parent.Read(buffer, offset, count) : this.ReadInternal(buffer, offset, count);
+            return Parent != null ? Parent.Read(buffer, offset, count) : ReadInternal(buffer, offset, count);
         }
 
         public int ReadInternal(byte[] buffer, int offset, int count)
         {
-            return this.channel.Read(buffer, offset, count);
+            return channel.Read(buffer, offset, count);
         }
 
         public WaveFormat WaveFormat
         {
-            get { return this.channel.WaveFormat; }
+            get { return channel.WaveFormat; }
         }
         
         public ICommand PlayPauseCommand
         {
             get
             {
-                return this.playPauseCommand;
+                return playPauseCommand;
             }
         }
 
@@ -74,7 +67,7 @@
         {
             get
             {
-                return this.playing;
+                return playing;
             }
         }
 
@@ -113,11 +106,11 @@
         {
             get
             {
-                return this.Component.Channel.Volume;
+                return Component.Channel.Volume;
             }
             set
             {
-                this.Component.Channel.Volume = Math.Max(MIN_VOLUME, Math.Min(MAX_VOLUME, value));
+                Component.Channel.Volume = Math.Max(MIN_VOLUME, Math.Min(MAX_VOLUME, value));
             }
         }
     }
@@ -134,11 +127,11 @@
         {
             get
             {
-                return this.Component.Channel.Pan;
+                return Component.Channel.Pan;
             }
             set
             {
-                this.Component.Channel.Pan = Math.Max(-MIN_MAX_PAN, Math.Min(MIN_MAX_PAN, value));
+                Component.Channel.Pan = Math.Max(-MIN_MAX_PAN, Math.Min(MIN_MAX_PAN, value));
             }
         }
 
@@ -163,21 +156,21 @@
     //    private AudioFileReader reader;
     //    public AudioProvider(string fileName)
     //    {
-    //        this.reader = new AudioFileReader(fileName);
+    //        reader = new AudioFileReader(fileName);
     //    }
 
     //    public float Volume { get; set; }
 
     //    public int Read(float[] buffer, int offset, int count)
     //    {
-    //        return this.reader.Read(buffer, offset, count);
+    //        return reader.Read(buffer, offset, count);
     //    }
 
     //    public WaveFormat WaveFormat
     //    {
     //        get
     //        {
-    //            return this.reader.WaveFormat;
+    //            return reader.WaveFormat;
     //        }
     //    }
     //}
@@ -188,21 +181,21 @@
     //    public MultiAudioProvider(string[] fileName)
     //    {
     //        var fs = fileName.Select(f => new Mp3FileReader(f)).ToArray();
-    //        this.provider = new MultiplexingWaveProvider(fs, 2);
+    //        provider = new MultiplexingWaveProvider(fs, 2);
     //    }
 
     //    public float Volume { get; set; }
 
     //    public int Read(byte[] buffer, int offset, int count)
     //    {
-    //        return this.provider.Read(buffer, offset, count);
+    //        return provider.Read(buffer, offset, count);
     //    }
 
     //    public WaveFormat WaveFormat
     //    {
     //        get
     //        {
-    //            return this.provider.WaveFormat;
+    //            return provider.WaveFormat;
     //        }
     //    }
     //}

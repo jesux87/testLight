@@ -4,20 +4,20 @@ namespace TestNAudio.Model.Light
 {
     public class LightManualSimpleFader : LightDecorator
     {
-        private readonly FaderValueControleur valueControleur;
+        private readonly FaderValueControleur _valueControleur;
 
         public LightManualSimpleFader(FaderValueControleur valueControleur, ILightProvider lightProvider, string name = null)
             : base(lightProvider, name)
         {
-            this.valueControleur = valueControleur;
-            this.valueControleur.ValueChanged += (sender, args) => this.RaiseValueChanged();
+            _valueControleur = valueControleur;
+            _valueControleur.ValueChanged += (sender, args) => RaiseValueChanged();
         }
 
         public FaderValueControleur ValueControleur
         {
             get
             {
-                return this.valueControleur;
+                return _valueControleur;
             }
         }
 
@@ -25,7 +25,7 @@ namespace TestNAudio.Model.Light
         {
             get
             {
-                return (byte)(this.ValueControleur.Value * this.Component.Value);
+                return (byte)(ValueControleur.Value * Component.Value);
             }
         }
     }

@@ -16,10 +16,10 @@ namespace TestNAudio.ValueControl
 
         private static void ValueChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
-            var _this = (FaderValueControleur)dependencyObject;
-            if (_this.ValueChanged != null)
+            var @this = (FaderValueControleur)dependencyObject;
+            if (@this.ValueChanged != null)
             {
-                _this.ValueChanged(_this, new EventArgs());
+                @this.ValueChanged(@this, new EventArgs());
             }
         }
 
@@ -37,7 +37,7 @@ namespace TestNAudio.ValueControl
 
         public FaderValueControleur(KeyboardLineControlMapping map):this()
         {
-            this.Map = map;
+            Map = map;
         }
 
         public FaderValueControleur()
@@ -49,47 +49,47 @@ namespace TestNAudio.ValueControl
             switch (valueModifier)
             {
                 case -2:
-                    if (this.map.ControlMode == KeyboardLineControlMode.ThreeThirds) this.Value = this.Minimum;
-                    else this.Value = Math.Min(this.Maximum, Math.Max(this.Minimum, this.Value - this.HighValueModifier));
+                    if (map.ControlMode == KeyboardLineControlMode.ThreeThirds) Value = Minimum;
+                    else Value = Math.Min(Maximum, Math.Max(Minimum, Value - HighValueModifier));
                     break;
                 case -1:
-                    if (this.map.ControlMode == KeyboardLineControlMode.ThreeThirds) this.Value = this.Minimum + (this.Maximum - this.Minimum) * .3333;
-                    else this.Value = Math.Min(this.Maximum, Math.Max(this.Minimum, this.Value - this.LowValueModifier));
+                    if (map.ControlMode == KeyboardLineControlMode.ThreeThirds) Value = Minimum + (Maximum - Minimum) * .3333;
+                    else Value = Math.Min(Maximum, Math.Max(Minimum, Value - LowValueModifier));
                     break;
                 case 1:
-                    if (this.map.ControlMode == KeyboardLineControlMode.ThreeThirds) this.Value = this.Minimum + (this.Maximum - this.Minimum) * .6667;
-                    else this.Value = Math.Min(this.Maximum, Math.Max(this.Minimum, this.Value + this.LowValueModifier));
+                    if (map.ControlMode == KeyboardLineControlMode.ThreeThirds) Value = Minimum + (Maximum - Minimum) * .6667;
+                    else Value = Math.Min(Maximum, Math.Max(Minimum, Value + LowValueModifier));
                     break;
                 case 2:
-                    if (this.map.ControlMode == KeyboardLineControlMode.ThreeThirds) this.Value = this.Maximum;
-                    else this.Value = Math.Min(this.Maximum, Math.Max(this.Minimum, this.Value + this.HighValueModifier));
+                    if (map.ControlMode == KeyboardLineControlMode.ThreeThirds) Value = Maximum;
+                    else Value = Math.Min(Maximum, Math.Max(Minimum, Value + HighValueModifier));
                     break;
             }
         }
 
         private void InitCommands()
         {
-            this.inputBindings.Clear();
-            if (this.map.ModifierKeys == ModifierKeys.None)
+            inputBindings.Clear();
+            if (map.ModifierKeys == ModifierKeys.None)
             {
-                this.inputBindings.Add(new KeyBinding { Command = new RelayCommand(o => this.ComputeValue(-2)), Key = this.map.HighDownKey });
-                this.inputBindings.Add(new KeyBinding { Command = new RelayCommand(o => this.ComputeValue(-1)), Key = this.map.LowDownKey });
-                this.inputBindings.Add(new KeyBinding { Command = new RelayCommand(o => this.ComputeValue(1)), Key = this.map.LowUpKey });
-                this.inputBindings.Add(new KeyBinding { Command = new RelayCommand(o => this.ComputeValue(2)), Key = this.map.HighUpKey });
+                inputBindings.Add(new KeyBinding { Command = new RelayCommand(o => ComputeValue(-2)), Key = map.HighDownKey });
+                inputBindings.Add(new KeyBinding { Command = new RelayCommand(o => ComputeValue(-1)), Key = map.LowDownKey });
+                inputBindings.Add(new KeyBinding { Command = new RelayCommand(o => ComputeValue(1)), Key = map.LowUpKey });
+                inputBindings.Add(new KeyBinding { Command = new RelayCommand(o => ComputeValue(2)), Key = map.HighUpKey });
                 return;
             }
 
-            this.inputBindings.Add(new KeyBinding(new RelayCommand(o => this.ComputeValue(-2)), this.map.HighDownKey, this.map.ModifierKeys));
-            this.inputBindings.Add(new KeyBinding(new RelayCommand(o => this.ComputeValue(-1)), this.map.LowDownKey, this.map.ModifierKeys));
-            this.inputBindings.Add(new KeyBinding(new RelayCommand(o => this.ComputeValue(1)), this.map.LowUpKey, this.map.ModifierKeys));
-            this.inputBindings.Add(new KeyBinding(new RelayCommand(o => this.ComputeValue(2)), this.map.HighUpKey, this.map.ModifierKeys));
+            inputBindings.Add(new KeyBinding(new RelayCommand(o => ComputeValue(-2)), map.HighDownKey, map.ModifierKeys));
+            inputBindings.Add(new KeyBinding(new RelayCommand(o => ComputeValue(-1)), map.LowDownKey, map.ModifierKeys));
+            inputBindings.Add(new KeyBinding(new RelayCommand(o => ComputeValue(1)), map.LowUpKey, map.ModifierKeys));
+            inputBindings.Add(new KeyBinding(new RelayCommand(o => ComputeValue(2)), map.HighUpKey, map.ModifierKeys));
         }
         
         public ICollection InputBindings
         {
             get
             {
-                return this.inputBindings;
+                return inputBindings;
             }
         }
 
@@ -97,11 +97,11 @@ namespace TestNAudio.ValueControl
         {
             get
             {
-                return (double)this.GetValue(LowValueModifierProperty);
+                return (double)GetValue(LowValueModifierProperty);
             }
             set
             {
-                this.SetValue(LowValueModifierProperty, value);
+                SetValue(LowValueModifierProperty, value);
             }
         }
 
@@ -109,11 +109,11 @@ namespace TestNAudio.ValueControl
         {
             get
             {
-                return (double)this.GetValue(HighValueModifierProperty);
+                return (double)GetValue(HighValueModifierProperty);
             }
             set
             {
-                this.SetValue(HighValueModifierProperty, value);
+                SetValue(HighValueModifierProperty, value);
             }
         }
 
@@ -121,11 +121,11 @@ namespace TestNAudio.ValueControl
         {
             get
             {
-                return (double)this.GetValue(MinimumProperty);
+                return (double)GetValue(MinimumProperty);
             }
             set
             {
-                this.SetValue(MinimumProperty, value);
+                SetValue(MinimumProperty, value);
             }
         }
 
@@ -133,11 +133,11 @@ namespace TestNAudio.ValueControl
         {
             get
             {
-                return (double)this.GetValue(MaximumProperty);
+                return (double)GetValue(MaximumProperty);
             }
             set
             {
-                this.SetValue(MaximumProperty, value);
+                SetValue(MaximumProperty, value);
             }
         }
 
@@ -145,11 +145,11 @@ namespace TestNAudio.ValueControl
         {
             get
             {
-                return (double)this.GetValue(ValueProperty);
+                return (double)GetValue(ValueProperty);
             }
             set
             {
-                this.SetValue(ValueProperty, value);
+                SetValue(ValueProperty, value);
             }
         }
 
@@ -157,8 +157,8 @@ namespace TestNAudio.ValueControl
         {
             set
             {
-                this.map = value;
-                this.InitCommands();
+                map = value;
+                InitCommands();
             }
         }
     }

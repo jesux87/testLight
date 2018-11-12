@@ -21,7 +21,7 @@ namespace Common
         {
             get
             {
-                return this.PropertyChanged;
+                return PropertyChanged;
             }
         }
 
@@ -65,7 +65,7 @@ namespace Common
         /// changed.</param>
         protected virtual void RaisePropertyChanged([CallerMemberName] string propertyName = null)
         {
-            PropertyChangedEventHandler handler = this.PropertyChanged;
+            PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
             {
                 handler(this, new PropertyChangedEventArgs(propertyName));
@@ -81,7 +81,7 @@ namespace Common
         /// that changed.</param>
         protected virtual void RaisePropertyChanged<T>(Expression<Func<T>> propertyExpression)
         {
-            PropertyChangedEventHandler handler = this.PropertyChanged;
+            PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
             {
                 string propertyName = GetPropertyName(propertyExpression);
@@ -111,7 +111,7 @@ namespace Common
             }
 
             field = newValue;
-            this.RaisePropertyChanged(propertyExpression);
+            RaisePropertyChanged(propertyExpression);
             return true;
         }
 
@@ -139,7 +139,7 @@ namespace Common
             field = newValue;
 
             // ReSharper disable once ExplicitCallerInfoArgument
-            this.RaisePropertyChanged(propertyName);
+            RaisePropertyChanged(propertyName);
             return true;
         }
     }

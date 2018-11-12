@@ -7,20 +7,20 @@ namespace TestNAudio.Model.Light
 {
     public class LightActionAnimation : LightDecorator
     {
-        private readonly AnimationValueControleur animControleur;
+        private readonly AnimationValueControleur _animControleur;
 
         public LightActionAnimation(AnimationValueControleur animControleur, ILightProvider lightProvider)
             : base(lightProvider)
         {
-            this.animControleur = animControleur;
-            this.AnimControleur.ValueChanged += (sender, args) => this.RaiseValueChanged();
+            _animControleur = animControleur;
+            AnimControleur.ValueChanged += (sender, args) => RaiseValueChanged();
         }
 
         public AnimationValueControleur AnimControleur
         {
             get
             {
-                return this.animControleur;
+                return _animControleur;
             }
         }
 
@@ -28,7 +28,7 @@ namespace TestNAudio.Model.Light
         {
             get
             {
-                return (byte)(this.AnimControleur.Value * this.Component.Value);
+                return (byte)(AnimControleur.Value * Component.Value);
             }
         }
     }

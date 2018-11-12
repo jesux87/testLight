@@ -42,14 +42,14 @@ namespace TestNAudio
 
         public MainWindow()
         {
-            this.InitCommands();
+            InitCommands();
 
-            this.InitControleurs();
+            InitControleurs();
 
-            this.InitializeComponent();
+            InitializeComponent();
 
-            this.RootGrid.InputBindings.Add(new InputBinding(this.goPrevCmd, new KeyGesture(Key.PageUp)));
-            this.RootGrid.InputBindings.Add(new InputBinding(this.goNextCmd, new KeyGesture(Key.PageDown)));
+            RootGrid.InputBindings.Add(new InputBinding(goPrevCmd, new KeyGesture(Key.PageUp)));
+            RootGrid.InputBindings.Add(new InputBinding(goNextCmd, new KeyGesture(Key.PageDown)));
 
             var seq = new Storyboard();
             //var avs = new LightSequence(new LightProvider(1));
@@ -58,10 +58,10 @@ namespace TestNAudio
 
             //seq.Children.Add(avs);
             seq.Begin();
-            //this.Tests();
+            //Tests();
             
-            this.TestWriteFile();
-            this.TestReadFile(Path.Combine(Path.GetTempPath(), "bidule.xml"));
+            TestWriteFile();
+            TestReadFile(Path.Combine(Path.GetTempPath(), "bidule.xml"));
         }
 
         private void TestReadFile(string filePath)
@@ -195,7 +195,7 @@ namespace TestNAudio
         private void InitControleurs()
          {
              
-             //this.Controleurs = new List<IValueControleur>()
+             //Controleurs = new List<IValueControleur>()
              //                       {
              //                           new FaderValueControleur(KeyboardControlMapping.AQ_KeyboardLine()),
              //                           new FaderValueControleur(KeyboardControlMapping.ZS_KeyboardLine()),
@@ -210,16 +210,16 @@ namespace TestNAudio
              //                           //new AnimationValueControleur(new KeyGesture(Key.NumPad0)) { Value = 1, CurveDirection = CurveDirection.Descendant, Duration = new Duration(TimeSpan.FromSeconds(3)), EasingFunction = new BounceEase() { Bounciness = 5, Bounces = 4, EasingMode = EasingMode.EaseOut } }
              //                       };
 
-             this.Projectors = new List<object>();
+             Projectors = new List<object>();
 
              var rgb = new LightRgbProvider(3, 4, 5);
              var r = new LightManualSimpleFader(new FaderValueControleur(KeyboardLineControlMapping.YH_KeyboardLine()), rgb.Red, "Rouge");
              var g = new LightManualSimpleFader(new FaderValueControleur(KeyboardLineControlMapping.YH_KeyboardLine()), rgb.Green, "Vert");
              var mult = new LightManualMultipleFader(new FaderValueControleur(KeyboardLineControlMapping.UJ_KeyboardLine()), new[] { new LightProvider(1), new LightProvider(2), rgb.Blue});
              var manF1 = new LightManualSimpleFader(new FaderValueControleur(KeyboardLineControlMapping.OL_KeyboardLine(KeyboardLineControlMode.ThreeThirds)), mult.LightProviders[0]);
-             this.manF3 = new LightManualSimpleFader(new FaderValueControleur(KeyboardLineControlMapping.IK_KeyboardLine()), mult.LightProviders[1]);
+             manF3 = new LightManualSimpleFader(new FaderValueControleur(KeyboardLineControlMapping.IK_KeyboardLine()), mult.LightProviders[1]);
              var manF2 = new LightManualSimpleFader(new FaderValueControleur(KeyboardLineControlMapping.PM_KeyboardLine()), manF1);
-            this.autoManF3 = new LightActionAnimation(new AnimationValueControleur(new KeyGesture(Key.NumPad1))
+            autoManF3 = new LightActionAnimation(new AnimationValueControleur(new KeyGesture(Key.NumPad1))
             {
                 Value = 1,
                 CurveDirection = CurveDirection.Descendant,
@@ -233,7 +233,7 @@ namespace TestNAudio
             }, manF2);
 
 
-            this.LightControllers = new List<ILightController>
+            LightControllers = new List<ILightController>
                                        {
                                            //new LightActionAnimation(new AnimationValueControleur(Key.NumPad0),  new LightProvider(2)),
                                            //new LightProvider(3),
@@ -244,33 +244,33 @@ namespace TestNAudio
                                            manF1,
                                            manF2,
                                            manF3,
-                                           this.autoManF3
+                                           autoManF3
                                        };
 
-             this.AudioControllers = new List<IAudioProvider>();
+             AudioControllers = new List<IAudioProvider>();
 
-             foreach (var lightProvider in this.LightControllers)
+             foreach (var lightProvider in LightControllers)
              {
                  var manValCtl = lightProvider as LightManualSimpleFader;
                  var multValCtl = lightProvider as LightManualMultipleFader;
                  var animValCtl = lightProvider as LightActionAnimation;
                  if (manValCtl != null)
                  {
-                     this.InputBindings.AddRange(manValCtl.ValueControleur.InputBindings);
+                     InputBindings.AddRange(manValCtl.ValueControleur.InputBindings);
                  }
                  if (multValCtl != null)
                  {
-                     this.InputBindings.AddRange(multValCtl.ValueControleur.InputBindings);
+                     InputBindings.AddRange(multValCtl.ValueControleur.InputBindings);
                  }
                  //if (animValCtl != null)
                  //{
-                 //    this.InputBindings.AddRange(animValCtl.AnimControleur.InputBindings);
+                 //    InputBindings.AddRange(animValCtl.AnimControleur.InputBindings);
                  //}
              }
 
-             this.Projectors.Add(new BulbProjector(this.autoManF3, Colors.DarkOrange));
-             this.Projectors.Add(new BulbProjector(this.manF3));
-             this.Projectors.Add(new RgbProjector(r, g, mult.LightProviders[2]));
+             Projectors.Add(new BulbProjector(autoManF3, Colors.DarkOrange));
+             Projectors.Add(new BulbProjector(manF3));
+             Projectors.Add(new RgbProjector(r, g, mult.LightProviders[2]));
          }
 
         public List<ILightController> LightControllers { get; set; }
@@ -291,59 +291,59 @@ namespace TestNAudio
             {
                 var selFiles = openFileDialog.FileNames;
 
-                this.WavesProvider = selFiles.Select(s => new WaveChannel32(new AudioFileReader(s))).ToArray();
+                WavesProvider = selFiles.Select(s => new WaveChannel32(new AudioFileReader(s))).ToArray();
 
-                foreach (var wav in this.WavesProvider)
+                foreach (var wav in WavesProvider)
                 {
                     var ap = new AudioProvider(wav);
                     var av = new AudioVolume(ap);
                     var pan = new AudioPan(av);
-                    /*this.Scene.AudioControllers.Add(ap);
-                    this.Scene.AudioControllers.Add(av);
-                    this.Scene.AudioControllers.Add(pan);
-                    this.Scene.AudioControllers.Add(new AudioEqualizer(pan));*/
+                    /*Scene.AudioControllers.Add(ap);
+                    Scene.AudioControllers.Add(av);
+                    Scene.AudioControllers.Add(pan);
+                    Scene.AudioControllers.Add(new AudioEqualizer(pan));*/
                 }
             }
         }
 
         private void InitCommands()
         {
-            this.goNextCmd = new RelayCommand(o => this.GoNext());
-            this.goPrevCmd = new RelayCommand(o => this.GoPrevious());
-            this.openAudioCmd = new RelayCommand(o => this.OpenAudioFile());
+            goNextCmd = new RelayCommand(o => GoNext());
+            goPrevCmd = new RelayCommand(o => GoPrevious());
+            openAudioCmd = new RelayCommand(o => OpenAudioFile());
 
-            this.openFileCommand = new RelayCommand(o =>
+            openFileCommand = new RelayCommand(o =>
             {
                 var ofd = new OpenFileDialog();
                 ofd.ShowDialog(this);
 
                 if (ofd.FileName.EndsWith(".xps"))
                 {
-                    this.PdfViewer.Visibility = Visibility.Hidden;
-                    this.XpsViewer.Visibility = Visibility.Visible;
-                    this.XpsViewer.Document = new XpsDocument(ofd.FileName, FileAccess.Read).GetFixedDocumentSequence();
+                    PdfViewer.Visibility = Visibility.Hidden;
+                    XpsViewer.Visibility = Visibility.Visible;
+                    XpsViewer.Document = new XpsDocument(ofd.FileName, FileAccess.Read).GetFixedDocumentSequence();
                 }
                 else if (ofd.FileName.EndsWith(".pdf"))
                 {
-                    this.XpsViewer.Visibility = Visibility.Hidden;
-                    this.PdfViewer.Visibility = Visibility.Visible;
-                    this.PdfViewer.OpenFile(ofd.FileName);
+                    XpsViewer.Visibility = Visibility.Hidden;
+                    PdfViewer.Visibility = Visibility.Visible;
+                    PdfViewer.OpenFile(ofd.FileName);
 
-                    this.PdfViewer.Loaded += (sender, args) =>
+                    PdfViewer.Loaded += (sender, args) =>
                         {
-                            this.PdfViewer.ZoomToWidth();
-                            this.PdfViewer.PageRowDisplay = PageRowDisplayType.ContinuousPageRows;
+                            PdfViewer.ZoomToWidth();
+                            PdfViewer.PageRowDisplay = PageRowDisplayType.ContinuousPageRows;
                         };
                 }
             });
 
-            this.blackOutCommand = new RelayCommand(active => this.BlackOut((bool)active));
-            this.shutUpCommand = new RelayCommand(active => this.ShutUp((bool)active));
+            blackOutCommand = new RelayCommand(active => BlackOut((bool)active));
+            shutUpCommand = new RelayCommand(active => ShutUp((bool)active));
         }
 
         private void ShutUp(bool active)
         {
-            /*foreach (var audioProvider in this.Scene.AudioControllers.OfType<AudioProvider>())
+            /*foreach (var audioProvider in Scene.AudioControllers.OfType<AudioProvider>())
             {
                 audioProvider.OutPutWave.Stop();
             }*/
@@ -351,7 +351,7 @@ namespace TestNAudio
 
         private void BlackOut(bool active)
         {
-            /*foreach (var lightProvider in this.Scene.LightControllers.OfType<LightProvider>())
+            /*foreach (var lightProvider in Scene.LightControllers.OfType<LightProvider>())
             {
                 lightProvider.BlackOut = active;
             }*/
@@ -359,21 +359,21 @@ namespace TestNAudio
 
         private void GoNext()
         {
-            this.PdfViewer.GotoNextPage();
-            this.XpsViewer.NextPage();
+            PdfViewer.GotoNextPage();
+            XpsViewer.NextPage();
         }
 
         private void GoPrevious()
         {
-            this.PdfViewer.GotoPreviousPage();
-            this.XpsViewer.PreviousPage();
+            PdfViewer.GotoPreviousPage();
+            XpsViewer.PreviousPage();
         }
 
         public ICommand OpenFileCommand
         {
             get
             {
-                return this.openFileCommand;
+                return openFileCommand;
             }
         }
 
@@ -400,7 +400,7 @@ namespace TestNAudio
         {
             get
             {
-                return this.openAudioCmd;
+                return openAudioCmd;
             }
         }
 
@@ -408,7 +408,7 @@ namespace TestNAudio
         {
             get
             {
-                return this.play1AudioCmd;
+                return play1AudioCmd;
             }
         }
 
@@ -416,7 +416,7 @@ namespace TestNAudio
         {
             get
             {
-                return this.play2AudioCmd;
+                return play2AudioCmd;
             }
         }
 
@@ -424,14 +424,14 @@ namespace TestNAudio
         {
             get
             {
-                return this.autoManF3;
+                return autoManF3;
             }
         }
         public ILightController ManF3
         {
             get
             {
-                return this.manF3;
+                return manF3;
             }
         }
     }

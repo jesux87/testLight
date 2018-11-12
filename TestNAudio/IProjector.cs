@@ -14,16 +14,16 @@ namespace TestNAudio
 
         public RgbProjector(ILightProvider redProvider, ILightProvider greenProvider, ILightProvider blueProvider)
         {
-            this.redProvider = redProvider;
-            this.greenProvider = greenProvider;
-            this.blueProvider = blueProvider;
+            redProvider = redProvider;
+            greenProvider = greenProvider;
+            blueProvider = blueProvider;
         }
 
         public ILightProvider RedProvider
         {
             get
             {
-                return this.redProvider;
+                return redProvider;
             }
         }
 
@@ -31,7 +31,7 @@ namespace TestNAudio
         {
             get
             {
-                return this.greenProvider;
+                return greenProvider;
             }
         }
 
@@ -39,7 +39,7 @@ namespace TestNAudio
         {
             get
             {
-                return this.blueProvider;
+                return blueProvider;
             }
         }
     }
@@ -51,8 +51,8 @@ namespace TestNAudio
 
         public BulbProjector(ILightProvider provider, Color bulbColor)
         {
-            this.provider = provider;
-            this.bulbColor = bulbColor;
+            provider = provider;
+            bulbColor = bulbColor;
         }
 
         public BulbProjector(ILightProvider provider) : this(provider, Colors.White)
@@ -62,7 +62,7 @@ namespace TestNAudio
         {
             get
             {
-                return this.provider;
+                return provider;
             }
         }
 
@@ -70,7 +70,7 @@ namespace TestNAudio
         {
             get
             {
-                return this.bulbColor;
+                return bulbColor;
             }
         }
     }

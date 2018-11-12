@@ -6,12 +6,12 @@ namespace TestNAudio.Model.Light
     {
         public LightProvider(int address)
         {
-            this.Address = address;
+            Address = address;
         }
 
         public byte Value
         {
-            get { return (byte)(this.BlackOut? 0 : 255); }
+            get { return (byte)(BlackOut? 0 : 255); }
         }
 
         public bool BlackOut { get; set; }
@@ -42,7 +42,7 @@ namespace TestNAudio.Model.Light
         {
             get
             {
-                return this.Address.ToString();
+                return Address.ToString();
             }
         }
     }
@@ -51,9 +51,9 @@ namespace TestNAudio.Model.Light
     {
         public LightRgbProvider(int adressR, int adressG, int adressB)
         {
-            this.Red = new LightProvider(adressR);
-            this.Green = new LightProvider(adressG);
-            this.Blue = new LightProvider(adressB);
+            Red = new LightProvider(adressR);
+            Green = new LightProvider(adressG);
+            Blue = new LightProvider(adressB);
         }
 
         public ILightProvider Red { get; private set; }

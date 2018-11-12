@@ -29,11 +29,11 @@ namespace TestNAudio.Model.XmlModel
         {
             get
             {
-                return this.Duration.Ticks;
+                return Duration.Ticks;
             }
             set
             {
-                this.Duration = new TimeSpan(value);
+                Duration = new TimeSpan(value);
             }
         }
 
@@ -42,11 +42,11 @@ namespace TestNAudio.Model.XmlModel
         {
             get
             {
-                return this.BeginTime.HasValue ? this.BeginTime.Value.Ticks : 0;
+                return BeginTime.HasValue ? BeginTime.Value.Ticks : 0;
             }
             set
             {
-                this.BeginTime = value != 0 ? new TimeSpan(value) : (TimeSpan?)null;
+                BeginTime = value != 0 ? new TimeSpan(value) : (TimeSpan?)null;
             }
         }
 

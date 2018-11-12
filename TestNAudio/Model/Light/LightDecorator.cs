@@ -6,31 +6,31 @@ namespace TestNAudio.Model.Light
 {
     public abstract class LightDecorator : NotifyPropertyChangedObject, ILightProvider
     {
-        private string name;
+        private string _name;
 
         protected ILightProvider Component { get; private set; }
 
         protected LightDecorator(ILightProvider component, string name = null)
         {
-            this.name = name;
-            this.Component = component;
-            this.Component.ValueChanged += (sender, args) => this.RaiseValueChanged();
+            _name = name;
+            Component = component;
+            Component.ValueChanged += (sender, args) => RaiseValueChanged();
         }
 
         protected void RaiseValueChanged()
         {
-            if (this.ValueChanged != null)
+            if (ValueChanged != null)
             {
-                this.ValueChanged(this, new EventArgs());
+                ValueChanged(this, new EventArgs());
             }
-            this.RaisePropertyChanged(() => this.Value);
+            RaisePropertyChanged(() => Value);
         }
 
         public virtual byte Value
         {
             get
             {
-                return this.Component.Value;
+                return Component.Value;
             }
         }
 
@@ -38,7 +38,7 @@ namespace TestNAudio.Model.Light
         {
             get
             {
-                return this.Component.Minimum;
+                return Component.Minimum;
             }
         }
 
@@ -46,7 +46,7 @@ namespace TestNAudio.Model.Light
         {
             get
             {
-                return this.Component.Maximum;
+                return Component.Maximum;
             }
         }
 
@@ -54,13 +54,13 @@ namespace TestNAudio.Model.Light
         {
             get
             {
-                if (string.IsNullOrEmpty(this.name))
-                    return this.Address.ToString();
-                return this.name;
+                if (string.IsNullOrEmpty(_name))
+                    return Address.ToString();
+                return _name;
             }
             protected set
             {
-                this.name = value;
+                _name = value;
             }
         }
 
@@ -70,7 +70,7 @@ namespace TestNAudio.Model.Light
         {
             get
             {
-                return this.Component.Level + 1;
+                return Component.Level + 1;
             }
         }
 
@@ -78,7 +78,7 @@ namespace TestNAudio.Model.Light
         {
             get
             {
-                return this.Component.Address;
+                return Component.Address;
             }
         }
 

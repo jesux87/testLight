@@ -16,8 +16,8 @@ namespace WpfTools
                 throw new ArgumentNullException("executeMethod", @"Execute Method cannot be null");
             }
 
-            this.executeMethod = executeMethod;
-            this.canExecuteMethod = canExecuteMethod;
+            executeMethod = executeMethod;
+            canExecuteMethod = canExecuteMethod;
         }
 
         public event EventHandler CanExecuteChanged
@@ -40,17 +40,17 @@ namespace WpfTools
         
         public bool CanExecute(object parameter)
         {
-            if (this.canExecuteMethod == null)
+            if (canExecuteMethod == null)
             {
                 return true;
             }
 
-            return this.canExecuteMethod(parameter);
+            return canExecuteMethod(parameter);
         }
 
         public void Execute(object parameter)
         {
-            this.executeMethod(parameter);
+            executeMethod(parameter);
         }
     }
 }

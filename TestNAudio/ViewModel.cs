@@ -23,26 +23,26 @@ namespace TestNAudio
         private WaveOutEvent player;
         public ViewModel()
         {
-            this.InitCommand();
+            InitCommand();
 
-            this.InitBandCollection();
+            InitBandCollection();
         }
 
         public IEnumerable<Equalizer.EqualizerBand> Bands
         {
             get
             {
-                return this.bands;
+                return bands;
             }
             set
             {
-                this.bands = value;
+                bands = value;
             }
         }
 
         private void InitBandCollection()
         {
-            this.Bands = new List<Equalizer.EqualizerBand>
+            Bands = new List<Equalizer.EqualizerBand>
                              {
                                  new Equalizer.EqualizerBand
                                      {
@@ -107,12 +107,12 @@ namespace TestNAudio
             bool? flag = openFileDialog.ShowDialog();
             if (flag.HasValue && flag.Value)
             {
-                this.selectedFile = openFileDialog.FileName;
-                this.reader = new AudioFileReader(this.selectedFile);
-                this.equalizer = new Equalizer(this.reader, this.Bands);
-                this.player = new WaveOutEvent();
-                this.player.Init(this.equalizer, false);
-                this.player.Play();
+                selectedFile = openFileDialog.FileName;
+                reader = new AudioFileReader(selectedFile);
+                equalizer = new Equalizer(reader, Bands);
+                player = new WaveOutEvent();
+                player.Init(equalizer, false);
+                player.Play();
             }
         }
     }
@@ -156,34 +156,34 @@ namespace TestNAudio
         {
             get
             {
-                return this.sourceProvider.WaveFormat;
+                return sourceProvider.WaveFormat;
             }
         }
 
         public Equalizer(ISampleProvider sourceProvider, IEnumerable<EqualizerBand> bands)
         {
-            this.sourceProvider = sourceProvider;
-            this.bands = bands;
-            this.channels = sourceProvider.WaveFormat.Channels;
-            this.bandCount = this.bands.Count();
-            this.filters = new BiQuadFilter[this.channels, this.bandCount];
-            this.CreateFilters();
+            sourceProvider = sourceProvider;
+            bands = bands;
+            channels = sourceProvider.WaveFormat.Channels;
+            bandCount = bands.Count();
+            filters = new BiQuadFilter[channels, bandCount];
+            CreateFilters();
         }
 
         private void CreateFilters()
         {
             var i = 0;
-            foreach (var equalizerBand in this.bands)
+            foreach (var equalizerBand in bands)
             {
-                for (int j = 0; j < this.channels; j++)
+                for (int j = 0; j < channels; j++)
                 {
-                    if (this.filters[j, i] == null)
+                    if (filters[j, i] == null)
                     {
-                        this.filters[j, i] = BiQuadFilter.PeakingEQ((float)this.sourceProvider.WaveFormat.SampleRate, (float)equalizerBand.Frequency, (float)equalizerBand.Bandwidth, (float)equalizerBand.Gain);
+                        filters[j, i] = BiQuadFilter.PeakingEQ((float)sourceProvider.WaveFormat.SampleRate, (float)equalizerBand.Frequency, (float)equalizerBand.Bandwidth, (float)equalizerBand.Gain);
                     }
                     else
                     {
-                        this.filters[j, i].SetPeakingEq((float)this.sourceProvider.WaveFormat.SampleRate, (float)equalizerBand.Frequency, (float)equalizerBand.Bandwidth, (float)equalizerBand.Gain);
+                        filters[j, i].SetPeakingEq((float)sourceProvider.WaveFormat.SampleRate, (float)equalizerBand.Frequency, (float)equalizerBand.Bandwidth, (float)equalizerBand.Gain);
                     }
                 }
 
@@ -193,24 +193,24 @@ namespace TestNAudio
 
         public void Update()
         {
-            this.updated = true;
-            this.CreateFilters();
+            updated = true;
+            CreateFilters();
         }
 
         public int Read(float[] buffer, int offset, int count)
         {
-            int num = this.sourceProvider.Read(buffer, offset, count);
-            if (this.updated)
+            int num = sourceProvider.Read(buffer, offset, count);
+            if (updated)
             {
-                this.CreateFilters();
-                this.updated = false;
+                CreateFilters();
+                updated = false;
             }
             for (int i = 0; i < num; i++)
             {
-                int num2 = i % this.channels;
-                for (int j = 0; j < this.bandCount; j++)
+                int num2 = i % channels;
+                for (int j = 0; j < bandCount; j++)
                 {
-                    buffer[offset + i] = this.filters[num2, j].Transform(buffer[offset + i]);
+                    buffer[offset + i] = filters[num2, j].Transform(buffer[offset + i]);
                 }
             }
             return num;

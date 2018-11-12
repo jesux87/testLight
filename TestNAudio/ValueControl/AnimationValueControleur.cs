@@ -25,7 +25,7 @@ namespace TestNAudio
         {
             get
             {
-                return this.inputBindings;
+                return inputBindings;
             }
         }
 
@@ -33,7 +33,7 @@ namespace TestNAudio
         {
             get
             {
-                return this.controlleurs;
+                return controlleurs;
             }
         }
 
@@ -41,16 +41,16 @@ namespace TestNAudio
         {
             set
             {
-                if (this.inputBinding != null)
-                    this.inputBindings.Clear();
-                this.inputBinding = new InputBinding(new RelayCommand(p => this.LaunchSequences()), value);
-                this.inputBindings.Add(this.inputBinding);
+                if (inputBinding != null)
+                    inputBindings.Clear();
+                inputBinding = new InputBinding(new RelayCommand(p => LaunchSequences()), value);
+                inputBindings.Add(inputBinding);
             }
         }
 
         public AnimationsControleur(KeyGesture gesture) : this()
         {
-            this.Gesture = gesture;
+            Gesture = gesture;
         }
 
         public AnimationsControleur()
@@ -74,11 +74,11 @@ namespace TestNAudio
         {
             get
             {
-                return (Duration)this.GetValue(DurationProperty);
+                return (Duration)GetValue(DurationProperty);
             }
             set
             {
-                this.SetValue(DurationProperty, value);
+                SetValue(DurationProperty, value);
             }
         }
         private readonly Collection<InputBinding> inputBindings = new Collection<InputBinding>();
@@ -87,15 +87,15 @@ namespace TestNAudio
         {
             set
             {
-                if (this.inputBinding != null)
-                    this.inputBindings.Clear();
-                this.inputBinding = new InputBinding(new RelayCommand(p => this.LaunchSequence()), value);
-                this.inputBindings.Add(this.inputBinding);
+                if (inputBinding != null)
+                    inputBindings.Clear();
+                inputBinding = new InputBinding(new RelayCommand(p => LaunchSequence()), value);
+                inputBindings.Add(inputBinding);
             }
         }
         public AnimationValueControleur(KeyGesture gesture) : this()
         {
-            this.Gesture = gesture;
+            Gesture = gesture;
         }
         public AnimationValueControleur()
         {
@@ -105,10 +105,10 @@ namespace TestNAudio
 
         private static void ValueChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            var _this = (AnimationValueControleur)dependencyObject;
-            if (_this.ValueChanged != null)
+            var @this = (AnimationValueControleur)dependencyObject;
+            if (@this.ValueChanged != null)
             {
-                _this.ValueChanged(_this, new EventArgs());
+                @this.ValueChanged(@this, new EventArgs());
             }
         }
 
@@ -118,25 +118,25 @@ namespace TestNAudio
 
         internal void LaunchSequence()
         {
-            if (this.CurveDirection == CurveDirection.Ascendant)
+            if (CurveDirection == CurveDirection.Ascendant)
             {
-                var anim = new DoubleAnimation(this.Value, 1, this.Duration, FillBehavior.Stop);
-                anim.Completed += (sender, args) => this.Value = 1;
-                if (this.EasingFunction != null)
+                var anim = new DoubleAnimation(Value, 1, Duration, FillBehavior.Stop);
+                anim.Completed += (sender, args) => Value = 1;
+                if (EasingFunction != null)
                 {
-                    anim.EasingFunction = this.EasingFunction;
+                    anim.EasingFunction = EasingFunction;
                 }
-                this.BeginAnimation(ValueProperty, anim);
+                BeginAnimation(ValueProperty, anim);
             }
             else
             {
-                var anim = new DoubleAnimation(this.Value, 0, this.Duration, FillBehavior.Stop);
-                anim.Completed += (sender, args) => this.Value = 0;
-                if (this.EasingFunction != null)
+                var anim = new DoubleAnimation(Value, 0, Duration, FillBehavior.Stop);
+                anim.Completed += (sender, args) => Value = 0;
+                if (EasingFunction != null)
                 {
-                    anim.EasingFunction = this.EasingFunction;
+                    anim.EasingFunction = EasingFunction;
                 }
-                this.BeginAnimation(ValueProperty, anim);
+                BeginAnimation(ValueProperty, anim);
             }
         }
 
@@ -144,11 +144,11 @@ namespace TestNAudio
         {
             get
             {
-                return (CurveDirection)this.GetValue(CurveDirectionProperty);
+                return (CurveDirection)GetValue(CurveDirectionProperty);
             }
             set
             {
-                this.SetValue(CurveDirectionProperty, value);
+                SetValue(CurveDirectionProperty, value);
             }
         }
 
@@ -156,11 +156,11 @@ namespace TestNAudio
         {
             get
             {
-                return (EasingFunctionBase)this.GetValue(EasingFunctionProperty);
+                return (EasingFunctionBase)GetValue(EasingFunctionProperty);
             }
             set
             {
-                this.SetValue(EasingFunctionProperty, value);
+                SetValue(EasingFunctionProperty, value);
             }
         }
 
@@ -168,11 +168,11 @@ namespace TestNAudio
         {
             get
             {
-                return (double)this.GetValue(ValueProperty);
+                return (double)GetValue(ValueProperty);
             }
             set
             {
-                this.SetValue(ValueProperty, value);
+                SetValue(ValueProperty, value);
             }
         }
 

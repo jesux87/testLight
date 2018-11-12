@@ -21,7 +21,7 @@ namespace TestNAudio
             var blue = (byte)values[2];
             return new Color
                        {
-                           A = this.Alpha,
+                           A = Alpha,
                            R = red,
                            G = green,
                            B = blue
